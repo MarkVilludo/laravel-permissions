@@ -1,6 +1,6 @@
 {
-    "name": "spatie/laravel-permission",
-    "description": "Permission handling for Laravel 5.1 and up",
+    "name": "mark-villudo/laravel-permission",
+    "description": "Permission handling for Laravel 5.1 and up for dynamic user role permissions for laravel ",
     "keywords": [
         "spatie",
         "laravel",
@@ -8,19 +8,17 @@
         "acl",
         "security"
     ],
-    "homepage": "https://github.com/spatie/laravel-permission",
+    "homepage": "https://github.com/MarkVilludo/laravel-permissions",
     "license": "MIT",
     "authors": [
         {
-            "name": "Freek Van der Herten",
-            "email": "freek@spatie.be",
-            "homepage": "https://spatie.be",
-            "role": "Developer"
+            "name": "Mark Villudo",
+            "email": "markanthony.villudo@gmail.com",
+            "role": "Back end developer"
         }
     ],
     "require": {
-        "php" : ">=5.6.0",
-        "laravel/framework": "~5.1.11|~5.2.0|~5.3.0|~5.4.0|~5.5.0|~5.6.0",
+        "php": ">=7.0.0",
         "illuminate/contracts": "~5.1.0|~5.2.0|~5.3.0|~5.4.0|~5.5.0|~5.6.0"
     },
     "require-dev": {
