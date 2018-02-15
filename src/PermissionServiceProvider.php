@@ -96,13 +96,13 @@ class PermissionServiceProvider extends ServiceProvider
     protected function registerControllers()
     {
         //Web
-        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\PermissionController');
-        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\RoleController');
-        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\UserControlller');
+        $this->app->make('Spatie\Permission\Controllers\PermissionController');
+        $this->app->make('Spatie\Permission\Controllers\RoleController');
+        $this->app->make('Spatie\Permission\Controllers\UserControlller');
 
         //Api
-        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\Api\PermissionController');
-        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\Api\RoleController');
-        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\Api\UserControlller');
+        $this->app->make('Spatie\Permission\Controllers\Api\PermissionController');
+        $this->app->make('Spatie\Permission\Controllers\Api\RoleController');
+        $this->app->make('Spatie\Permission\Controllers\Api\UserControlller');
     }
 }
