@@ -94,15 +94,15 @@ class PermissionServiceProvider extends ServiceProvider
     }   
 
     protected function registerControllers()
-    {
+    {   
         //Web
-        $this->app->make('Spatie\Permission\Controllers\PermissionController');
-        $this->app->make('Spatie\Permission\Controllers\RoleController');
-        $this->app->make('Spatie\Permission\Controllers\UserControlller');
+        $this->app->make('MarkVilludo/Permission/Controllers/PermissionController');
+        $this->app->make('MarkVilludo/Permission/Controllers/RoleController');
+        $this->app->make('MarkVilludo/Permission/Controllers/UserControlller');
 
         //Api
-        $this->app->make('Spatie\Permission\Controllers\Api\PermissionController');
-        $this->app->make('Spatie\Permission\Controllers\Api\RoleController');
-        $this->app->make('Spatie\Permission\Controllers\Api\UserControlller');
+        $this->app->make('MarkVilludo/Permission/Controllers/Api/PermissionController');
+        $this->app->make('MarkVilludo/Permission/Controllers/Api/RoleController');
+        $this->app->make('MarkVilludo/Permission/Controllers/Api/UserControlller');
     }
 }
