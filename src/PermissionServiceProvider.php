@@ -81,4 +81,9 @@ class PermissionServiceProvider extends ServiceProvider
             });
         });
     }
+
+    protected function registerRoutes() {
+        include '/../routes/api.php';
+        include '/../routes/web.php';
+    }
 }
