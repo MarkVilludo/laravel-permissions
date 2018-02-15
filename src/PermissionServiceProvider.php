@@ -88,8 +88,8 @@ class PermissionServiceProvider extends ServiceProvider
 
     protected function registerRoutes()
     {
-        include '/../routes/api.php';
-        include '/../routes/web.php';
+        include '../'__DIR__.'/routes/api.php';
+        include '../'__DIR__.'/routes/web.php';
     }
 
     protected function registerControllers()
