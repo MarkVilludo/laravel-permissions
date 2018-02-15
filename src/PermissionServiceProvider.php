@@ -39,6 +39,10 @@ class PermissionServiceProvider extends ServiceProvider
         );
 
         $this->registerBladeExtensions();
+
+        $this->registerRoutes();
+
+        $this->registerControllers();
     }
 
     protected function registerModelBindings()
@@ -82,8 +86,22 @@ class PermissionServiceProvider extends ServiceProvider
         });
     }
 
-    protected function registerRoutes() {
+    protected function registerRoutes()
+    {
         include '/../routes/api.php';
         include '/../routes/web.php';
+    }
+
+    protected function registerControllers()
+    {
+        //Web
+        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\PermissionController');
+        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\RoleController');
+        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\UserControlller');
+
+        //Api
+        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\Api\PermissionController');
+        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\Api\RoleController');
+        $this->app->make('MarkVilludo\Laravel-permissions\Controllers\Api\UserControlller');
     }
 }
