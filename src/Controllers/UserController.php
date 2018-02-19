@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('users.index')->with('users', $users);
+        return view('laravel-permission::users.index')->with('users', $users);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
             }
         }        
 
-        return redirect()->route('users.index')
+        return redirect()->route('laravel-permission::users.index')
             ->with('flash_message',
              'User successfully added.');
     }
@@ -93,7 +93,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::get();
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('laravel-permission::users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -123,7 +123,7 @@ class UserController extends Controller
         else {
             $user->roles()->detach();
         }
-        return redirect()->route('users.index')
+        return redirect()->route('laravel-permission::users.index')
             ->with('flash_message',
              'User successfully edited.');
     }
@@ -139,7 +139,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')
+        return redirect()->route('laravel-permission::users.index')
             ->with('flash_message',
              'User successfully deleted.');
     }
