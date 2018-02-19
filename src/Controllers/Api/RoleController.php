@@ -1,11 +1,11 @@
 <?php
 
-namespace MarkVilludo\Calculator\Controllers\Api;
+namespace MarkVilludo\Permission\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use MarkVilludo\Permission\Models\Role;
+use MarkVilludo\Permission\Models\Permission;
 use Auth;
 use Response;
 use Validator;

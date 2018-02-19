@@ -1,6 +1,6 @@
 <?php
 
-namespace MarkVilludo\Calculator\Controllers\Api;
+namespace MarkVilludo\Permission\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,8 +9,8 @@ use App\User;
 use Response;
 use Illuminate\Validation\Rule;
 use Validator;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use MarkVilludo\Permission\Models\Role;
+use MarkVilludo\Permission\Models\Permission;
 use Config;
 
 class UserController extends Controller

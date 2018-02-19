@@ -1,13 +1,12 @@
 <?php
 
-namespace MarkVilludo\Calculator\Controllers;
+namespace MarkVilludo\Permission\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\User;
 use Auth;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use MarkVilludo\Permission\Models\Role;
+use MarkVilludo\Permission\Models\Permission;
 use Session;
 
 class UserController extends Controller
