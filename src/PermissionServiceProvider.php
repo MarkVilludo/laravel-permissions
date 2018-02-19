@@ -6,17 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use MarkVilludo\Permission\Contracts\Role as RoleContract;
 use MarkVilludo\Permission\Contracts\Permission as PermissionContract;
-
-
 class PermissionServiceProvider extends ServiceProvider
 {
     public function boot(PermissionRegistrar $permissionLoader)
-    {   
-        $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
-
-        $this->publishes([
-           __DIR__.'/../views' => resource_path('views/vendor/mark-villudo/laravel-permission'),
-        ]);
+    {
         if (isNotLumen()) {
             $this->publishes([
                 __DIR__.'/../config/permission.php' => config_path('permission.php'),
@@ -37,7 +30,7 @@ class PermissionServiceProvider extends ServiceProvider
                 Commands\CreatePermission::class,
             ]);
         }
-
+    
         $this->registerModelBindings();
 
         $permissionLoader->registerPermissions();
@@ -106,7 +99,6 @@ class PermissionServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         include __DIR__.'/routes/api.php';
-
         include __DIR__.'/routes/web.php';
     }  
 }
