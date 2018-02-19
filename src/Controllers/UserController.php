@@ -3,6 +3,7 @@
 namespace MarkVilludo\Permission\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
 use MarkVilludo\Permission\Models\Role;
@@ -13,7 +14,7 @@ class UserController extends Controller
 {
     public function __construct() 
     {
-        $this->middleware(['auth', 'isAdmin']);
+        // $this->middleware(['auth', 'isAdmin']);
     }
     
     /**

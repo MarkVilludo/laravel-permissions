@@ -9,8 +9,12 @@ use MarkVilludo\Permission\Contracts\Permission as PermissionContract;
 
 class PermissionServiceProvider extends ServiceProvider
 {
-    public function boot(PermissionRegistrar $permissionLoader)
-    {
+    public function boot(PermissionRegistrar $permissionLoader) 
+    {   
+        //Load views from packages
+
+        $this->loadViewsFrom(__DIR__.'/../views', 'courier');
+
         if (isNotLumen()) {
             $this->publishes([
                 __DIR__.'/../config/permission.php' => config_path('permission.php'),
@@ -107,16 +111,15 @@ class PermissionServiceProvider extends ServiceProvider
 
         include __DIR__.'/routes/web.php';
     }  
-    
     protected function registerControllers() {
         //Api
-        $this->app->make('MarkVilludo\Api\PermissionController');
-        $this->app->make('MarkVilludo\Api\RoleController');
-        $this->app->make('MarkVilludo\Api\UserController');
+        // $this->app->make('MarkVilludo\Contollers\Api\PermissionController');
+        // $this->app->make('MarkVilludo\Contollers\Api\RoleController');
+        // $this->app->make('MarkVilludo\Contollers\Api\UserController');
 
-        //Web
-        $this->app->make('MarkVilludo\PermissionController');
-        $this->app->make('MarkVilludo\RoleController');
-        $this->app->make('MarkVilludo\UserController');
+        // //Web
+        // $this->app->make('MarkVilludo\Contollers\PermissionController');
+        // $this->app->make('MarkVilludo\Contollers\RoleController');
+        // $this->app->make('MarkVilludo\Contollers\UserController');
     }  
 }

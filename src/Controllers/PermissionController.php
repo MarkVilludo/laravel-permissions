@@ -3,7 +3,7 @@
 namespace MarkVilludo\Permission\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use Auth;
 use MarkVilludo\Permission\Models\Role;
 use MarkVilludo\Permission\Models\Permission;
