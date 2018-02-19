@@ -1,5 +1,5 @@
 {
-    "name": "spatie/laravel-permission",
+    "name": "mark-villudo/laravel-permission",
     "description": "Permission handling for Laravel 5.4 and up",
     "keywords": [
         "spatie",
@@ -8,14 +8,13 @@
         "acl",
         "security"
     ],
-    "homepage": "https://github.com/spatie/laravel-permission",
+    "homepage": "https://github.com/MarkVilludo/laravel-permissions",
     "license": "MIT",
     "authors": [
         {
-            "name": "Freek Van der Herten",
-            "email": "freek@spatie.be",
-            "homepage": "https://spatie.be",
-            "role": "Developer"
+            "name": "Mark Villudo",
+            "email": "markanthony.villudo@gmail.com",
+            "role": "Back end developer"
         }
     ],
     "require": {
