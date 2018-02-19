@@ -13,8 +13,6 @@ class PermissionServiceProvider extends ServiceProvider
     {   
         //Load views from packages
 
-        $this->loadViewsFrom(__DIR__.'/../views', 'permissions');
-
         if (isNotLumen()) {
             $this->publishes([
                 __DIR__.'/../config/permission.php' => config_path('permission.php'),
