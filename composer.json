@@ -57,7 +57,7 @@
             ],
             "aliases": [
                 "Collective\\Html\\FormFacade::class",
-                "Collective\\Html\\HtmlFacade::class",
+                "Collective\\Html\\HtmlFacade::class"
             ]
         }
     }
