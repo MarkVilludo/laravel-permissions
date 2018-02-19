@@ -25,7 +25,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('permissions.index')->with('permissions', $permissions);
+        return view('laravel-permission::permissions.index')->with('permissions', $permissions);
     }
 
     /**
@@ -37,7 +37,7 @@ class PermissionController extends Controller
     {
         $roles = Role::get();
 
-        return view('permissions.create')->with('roles', $roles);
+        return view('laravel-permission::permissions.create')->with('roles', $roles);
     }
 
     /**
@@ -97,7 +97,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
         
-        return view('permissions.edit', compact('permission'));
+        return view('laravel-permission::permissions.edit', compact('permission'));
     }
 
     /**
