@@ -30,8 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MarkVilludo\\Permission\\": "src",
-            "MarkVilludo\\Permission\\": "views"
+            "MarkVilludo\\Permission\\": "src"
         },
         "files": [
             "src/helpers.php"
