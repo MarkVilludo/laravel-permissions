@@ -11,7 +11,6 @@ class PermissionServiceProvider extends ServiceProvider
 {
     public function boot(PermissionRegistrar $permissionLoader) 
     {   
-        //Load views from packages
 
         if (isNotLumen()) {
             $this->publishes([
@@ -50,9 +49,6 @@ class PermissionServiceProvider extends ServiceProvider
 
         //register routes
         $this->registerRoutes();
-
-        //register controller in service providers
-        $this->registerControllers();
     }
 
     protected function registerModelBindings()
@@ -108,17 +104,5 @@ class PermissionServiceProvider extends ServiceProvider
         include __DIR__.'/routes/api.php';
 
         include __DIR__.'/routes/web.php';
-    }  
-    protected function registerControllers() {
-        //Api
-        // $this->app->make('MarkVilludo\Contollers\Api\PermissionController');
-        // $this->app->make('MarkVilludo\Contollers\Api\RoleController');
-        // $this->app->make('MarkVilludo\Contollers\Api\UserController');
-
-        // //Web
-        // $this->app->make('MarkVilludo\Contollers\PermissionController');
-        // $this->app->make('MarkVilludo\Contollers\RoleController');
-        // $this->app->make('MarkVilludo\Contollers\UserController');
-
     }  
 }
