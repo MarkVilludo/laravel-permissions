@@ -13,7 +13,11 @@ class PermissionServiceProvider extends ServiceProvider
     {   
         //Load views from packages
 
-        $this->loadViewsFrom(__DIR__.'/../views', 'courier');
+        $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
+
+        $this->publishes([
+            __DIR__.'/../views' => resource_path('views/vendor/mark-villudo/laravel-permission'),
+        ]);
 
         if (isNotLumen()) {
             $this->publishes([
@@ -121,5 +125,6 @@ class PermissionServiceProvider extends ServiceProvider
         // $this->app->make('MarkVilludo\Contollers\PermissionController');
         // $this->app->make('MarkVilludo\Contollers\RoleController');
         // $this->app->make('MarkVilludo\Contollers\UserController');
+
     }  
 }
