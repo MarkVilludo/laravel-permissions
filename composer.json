@@ -50,8 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MarkVilludo\\Permission\\PermissionServiceProvider",
-                "Collective\\Html\\HtmlServiceProvider",
+                "MarkVilludo\\Permission\\PermissionServiceProvider"
             ]
         }
     }
