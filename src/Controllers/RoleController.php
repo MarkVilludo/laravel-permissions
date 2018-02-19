@@ -20,7 +20,7 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return view('roles.index')->with('roles', $roles);
+        return view('laravel-permission::roles.index')->with('roles', $roles);
     }
 
     /**
@@ -32,7 +32,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('roles.create', ['permissions'=>$permissions]);
+        return view('laravel-permission::roles.create', ['permissions'=>$permissions]);
     }
 
     /**
@@ -91,7 +91,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('laravel-permission::roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -124,7 +124,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);  
         }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('laravel-permission::roles.index')
             ->with('flash_message',
              'Role'. $role->name.' updated!');
     }
@@ -140,7 +140,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('roles.index')
+        return redirect()->route('laravel-permission::roles.index')
             ->with('flash_message',
              'Role deleted!');
     }
