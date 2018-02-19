@@ -110,13 +110,13 @@ class PermissionServiceProvider extends ServiceProvider
     
     protected function registerControllers() {
         //Api
-        $this->app->make('MarkVilludo\Api\PermissionController');
-        $this->app->make('MarkVilludo\Api\RoleController');
-        $this->app->make('MarkVilludo\Api\UserController');
+        $this->app->make('MarkVilludo\Permission\Contollers\Api\PermissionController');
+        $this->app->make('MarkVilludo\Permission\Contollers\Api\RoleController');
+        $this->app->make('MarkVilludo\Permission\Contollers\Api\UserController');
 
         //Web
-        $this->app->make('MarkVilludo\PermissionController');
-        $this->app->make('MarkVilludo\RoleController');
-        $this->app->make('MarkVilludo\UserController');
+        $this->app->make('MarkVilludo\Permission\Contollers\PermissionController');
+        $this->app->make('MarkVilludo\Permission\Contollers\RoleController');
+        $this->app->make('MarkVilludo\Permission\Contollers\UserController');
     }  
 }
