@@ -7,12 +7,11 @@ use Illuminate\View\Compilers\BladeCompiler;
 use MarkVilludo\Permission\Contracts\Role as RoleContract;
 use MarkVilludo\Permission\Contracts\Permission as PermissionContract;
 
+
 class PermissionServiceProvider extends ServiceProvider
 {
-    public function boot(PermissionRegistrar $permissionLoader) 
-    {   
-        //Load views from packages
-
+    public function boot(PermissionRegistrar $permissionLoader)
+    {
         if (isNotLumen()) {
             $this->publishes([
                 __DIR__.'/../config/permission.php' => config_path('permission.php'),
@@ -47,9 +46,8 @@ class PermissionServiceProvider extends ServiceProvider
                 'permission'
             );
         }
-
-        //register routes
         $this->registerRoutes();
+        $this->registerBladeExtensions();
     }
 
     protected function registerModelBindings()
