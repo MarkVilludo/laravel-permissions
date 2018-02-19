@@ -15,7 +15,7 @@ class PermissionServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
 
         $this->publishes([
-           __DIR__.'/../views' => resource_path('views/vendor/mark-villudo/laravel-permission'),
+           __DIR__.'/../views' => resource_path('views/vendor/mark-villudo/laravel-permission')
         ]);
         
         if (isNotLumen()) {
