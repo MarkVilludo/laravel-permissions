@@ -115,8 +115,8 @@ class PermissionServiceProvider extends ServiceProvider
 //         $this->app->make('MarkVilludo\Permission\Contollers\Api\UserController');
 
         //Web
-        $this->app->make('MarkVilludo\Permission\Contollers\PermissionController');
-        $this->app->make('MarkVilludo\Permission\Contollers\RoleController');
-        $this->app->make('MarkVilludo\Permission\Contollers\UserController');
+//         $this->app->make('MarkVilludo\Permission\Contollers\PermissionController');
+//         $this->app->make('MarkVilludo\Permission\Contollers\RoleController');
+//         $this->app->make('MarkVilludo\Permission\Contollers\UserController');
     }  
 }
