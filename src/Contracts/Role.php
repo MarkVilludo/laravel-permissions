@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Permission\Contracts;
+namespace MarkVilludo\Permission\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -19,9 +19,9 @@ interface Role
      * @param string $name
      * @param string|null $guardName
      *
-     * @return \Spatie\Permission\Contracts\Role
+     * @return \MarkVilludo\Permission\Contracts\Role
      *
-     * @throws \Spatie\Permission\Exceptions\RoleDoesNotExist
+     * @throws \MarkVilludo\Permission\Exceptions\RoleDoesNotExist
      */
     public static function findByName(string $name, $guardName): self;
 
@@ -30,16 +30,16 @@ interface Role
      * @param int $id
      * @param string|null $guardName
      *
-     * @return \Spatie\Permission\Contracts\Role
+     * @return \MarkVilludo\Permission\Contracts\Role
      *
-     * @throws \Spatie\Permission\Exceptions\RoleDoesNotExist
+     * @throws \MarkVilludo\Permission\Exceptions\RoleDoesNotExist
      */
     public static function findById(int $id, $guardName): self;
 
     /**
      * Determine if the user may perform the given permission.
      *
-     * @param string|\Spatie\Permission\Contracts\Permission $permission
+     * @param string|\MarkVilludo\Permission\Contracts\Permission $permission
      *
      * @return bool
      */

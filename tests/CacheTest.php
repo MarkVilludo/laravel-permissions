@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Permission\Test;
+namespace MarkVilludo\Permission\Test;
 
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Contracts\Role;
-use Spatie\Permission\PermissionRegistrar;
-use Spatie\Permission\Contracts\Permission;
+use MarkVilludo\Permission\Contracts\Role;
+use MarkVilludo\Permission\PermissionRegistrar;
+use MarkVilludo\Permission\Contracts\Permission;
 
 class CacheTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Permission;
+namespace MarkVilludo\Permission;
 
 use Illuminate\Support\Collection;
 

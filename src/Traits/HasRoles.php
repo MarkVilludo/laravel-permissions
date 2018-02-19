@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Permission\Traits;
+namespace MarkVilludo\Permission\Traits;
 
 use Illuminate\Support\Collection;
-use Spatie\Permission\Contracts\Role;
+use MarkVilludo\Permission\Contracts\Role;
 use Illuminate\Database\Eloquent\Builder;
-use Spatie\Permission\Contracts\Permission;
+use MarkVilludo\Permission\Contracts\Permission;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasRoles
@@ -56,7 +56,7 @@ trait HasRoles
      * Scope the model query to certain roles only.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string|array|\Spatie\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|array|\MarkVilludo\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -88,7 +88,7 @@ trait HasRoles
     }
 
     /**
-     * @param string|array|\Spatie\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
+     * @param string|array|\MarkVilludo\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
      *
      * @return array
      */
@@ -113,7 +113,7 @@ trait HasRoles
      * Scope the model query to certain permissions only.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string|array|\Spatie\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
+     * @param string|array|\MarkVilludo\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -149,7 +149,7 @@ trait HasRoles
     /**
      * Assign the given role to the model.
      *
-     * @param array|string|\Spatie\Permission\Contracts\Role ...$roles
+     * @param array|string|\MarkVilludo\Permission\Contracts\Role ...$roles
      *
      * @return $this
      */
@@ -175,7 +175,7 @@ trait HasRoles
     /**
      * Revoke the given role from the model.
      *
-     * @param string|\Spatie\Permission\Contracts\Role $role
+     * @param string|\MarkVilludo\Permission\Contracts\Role $role
      */
     public function removeRole($role)
     {
@@ -185,7 +185,7 @@ trait HasRoles
     /**
      * Remove all current roles and set the given ones.
      *
-     * @param array|\Spatie\Permission\Contracts\Role|string ...$roles
+     * @param array|\MarkVilludo\Permission\Contracts\Role|string ...$roles
      *
      * @return $this
      */
@@ -199,7 +199,7 @@ trait HasRoles
     /**
      * Determine if the model has (one of) the given role(s).
      *
-     * @param string|array|\Spatie\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|array|\MarkVilludo\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */
@@ -233,7 +233,7 @@ trait HasRoles
     /**
      * Determine if the model has any of the given role(s).
      *
-     * @param string|array|\Spatie\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|array|\MarkVilludo\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */
@@ -245,7 +245,7 @@ trait HasRoles
     /**
      * Determine if the model has all of the given role(s).
      *
-     * @param string|\Spatie\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|\MarkVilludo\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */
@@ -273,7 +273,7 @@ trait HasRoles
     /**
      * Determine if the model may perform the given permission.
      *
-     * @param string|\Spatie\Permission\Contracts\Permission $permission
+     * @param string|\MarkVilludo\Permission\Contracts\Permission $permission
      * @param string|null $guardName
      *
      * @return bool
@@ -315,7 +315,7 @@ trait HasRoles
     /**
      * Determine if the model has, via roles, the given permission.
      *
-     * @param \Spatie\Permission\Contracts\Permission $permission
+     * @param \MarkVilludo\Permission\Contracts\Permission $permission
      *
      * @return bool
      */
@@ -327,7 +327,7 @@ trait HasRoles
     /**
      * Determine if the model has the given permission.
      *
-     * @param string|\Spatie\Permission\Contracts\Permission $permission
+     * @param string|\MarkVilludo\Permission\Contracts\Permission $permission
      *
      * @return bool
      */

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Permission\Test;
+namespace MarkVilludo\Permission\Test;
 
-use Spatie\Permission\Models\Permission;
+use MarkVilludo\Permission\Models\Permission;
 
 class MultipleGuardsTest extends TestCase
 {

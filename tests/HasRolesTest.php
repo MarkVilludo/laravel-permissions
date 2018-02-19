@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Permission\Test;
+namespace MarkVilludo\Permission\Test;
 
-use Spatie\Permission\Contracts\Role;
-use Spatie\Permission\Exceptions\RoleDoesNotExist;
-use Spatie\Permission\Exceptions\GuardDoesNotMatch;
-use Spatie\Permission\Exceptions\PermissionDoesNotExist;
+use MarkVilludo\Permission\Contracts\Role;
+use MarkVilludo\Permission\Exceptions\RoleDoesNotExist;
+use MarkVilludo\Permission\Exceptions\GuardDoesNotMatch;
+use MarkVilludo\Permission\Exceptions\PermissionDoesNotExist;
 
 class HasRolesTest extends TestCase
 {

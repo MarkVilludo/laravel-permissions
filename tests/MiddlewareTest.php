@@ -1,13 +1,13 @@
 <?php
 
-namespace Spatie\Permission\Test;
+namespace MarkVilludo\Permission\Test;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Middlewares\RoleMiddleware;
-use Spatie\Permission\Exceptions\UnauthorizedException;
-use Spatie\Permission\Middlewares\PermissionMiddleware;
+use MarkVilludo\Permission\Middlewares\RoleMiddleware;
+use MarkVilludo\Permission\Exceptions\UnauthorizedException;
+use MarkVilludo\Permission\Middlewares\PermissionMiddleware;
 
 class MiddlewareTest extends TestCase
 {

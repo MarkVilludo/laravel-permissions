@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Permission;
+namespace MarkVilludo\Permission;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use Spatie\Permission\Contracts\Role as RoleContract;
-use Spatie\Permission\Contracts\Permission as PermissionContract;
+use MarkVilludo\Permission\Contracts\Role as RoleContract;
+use MarkVilludo\Permission\Contracts\Permission as PermissionContract;
 
 class PermissionServiceProvider extends ServiceProvider
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace Spatie\Permission\Traits;
+namespace MarkVilludo\Permission\Traits;
 
-use Spatie\Permission\Guard;
+use MarkVilludo\Permission\Guard;
 use Illuminate\Support\Collection;
-use Spatie\Permission\PermissionRegistrar;
-use Spatie\Permission\Contracts\Permission;
-use Spatie\Permission\Exceptions\GuardDoesNotMatch;
+use MarkVilludo\Permission\PermissionRegistrar;
+use MarkVilludo\Permission\Contracts\Permission;
+use MarkVilludo\Permission\Exceptions\GuardDoesNotMatch;
 
 trait HasPermissions
 {
     /**
      * Grant the given permission(s) to a role.
      *
-     * @param string|array|\Spatie\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
+     * @param string|array|\MarkVilludo\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
      *
      * @return $this
      */
@@ -39,7 +39,7 @@ trait HasPermissions
     /**
      * Remove all current permissions and set the given ones.
      *
-     * @param string|array|\Spatie\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
+     * @param string|array|\MarkVilludo\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
      *
      * @return $this
      */
@@ -53,7 +53,7 @@ trait HasPermissions
     /**
      * Revoke the given permission.
      *
-     * @param \Spatie\Permission\Contracts\Permission|\Spatie\Permission\Contracts\Permission[]|string|string[] $permission
+     * @param \MarkVilludo\Permission\Contracts\Permission|\MarkVilludo\Permission\Contracts\Permission[]|string|string[] $permission
      *
      * @return $this
      */
@@ -67,9 +67,9 @@ trait HasPermissions
     }
 
     /**
-     * @param string|array|\Spatie\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
+     * @param string|array|\MarkVilludo\Permission\Contracts\Permission|\Illuminate\Support\Collection $permissions
      *
-     * @return \Spatie\Permission\Contracts\Permission|\Spatie\Permission\Contracts\Permission[]|\Illuminate\Support\Collection
+     * @return \MarkVilludo\Permission\Contracts\Permission|\MarkVilludo\Permission\Contracts\Permission[]|\Illuminate\Support\Collection
      */
     protected function getStoredPermission($permissions)
     {
@@ -88,9 +88,9 @@ trait HasPermissions
     }
 
     /**
-     * @param \Spatie\Permission\Contracts\Permission|\Spatie\Permission\Contracts\Role $roleOrPermission
+     * @param \MarkVilludo\Permission\Contracts\Permission|\MarkVilludo\Permission\Contracts\Role $roleOrPermission
      *
-     * @throws \Spatie\Permission\Exceptions\GuardDoesNotMatch
+     * @throws \MarkVilludo\Permission\Exceptions\GuardDoesNotMatch
      */
     protected function ensureModelSharesGuard($roleOrPermission)
     {
