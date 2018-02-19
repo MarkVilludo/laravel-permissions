@@ -46,8 +46,11 @@ class PermissionServiceProvider extends ServiceProvider
             );
         }
 
-        $this->registerBladeExtensions();
+        //register routes
         $this->registerRoutes();
+
+        //register controller in service providers
+        $this->registerControllers();
     }
 
     protected function registerModelBindings()
@@ -103,5 +106,16 @@ class PermissionServiceProvider extends ServiceProvider
         include __DIR__.'/routes/api.php';
 
         include __DIR__.'/routes/web.php';
-    }   
+    }  
+    protected function registerControllers() {
+        //Api
+        $this->app->make('MarkVilludo\Permission\Api\PermissionController');
+        $this->app->make('MarkVilludo\Permission\Api\RoleController');
+        $this->app->make('MarkVilludo\Permission\Api\UserController');
+
+        //Web
+        $this->app->make('MarkVilludo\Permission\PermissionController');
+        $this->app->make('MarkVilludo\Permission\RoleController');
+        $this->app->make('MarkVilludo\Permission\UserController');
+    }  
 }

@@ -22,10 +22,10 @@ Route::get('/logout', function () {
     return view('login');
 });
 
-Route::resource('users', 'UserController');
+Route::resource('users', 'MarkVilludo\Permission\Controllers\UserController');
 
-Route::resource('roles', 'RoleController');
+Route::resource('roles', 'MarkVilludo\Permission\Controllers\RoleController');
 
-Route::resource('permissions', 'PermissionController');
+Route::resource('permissions', 'MarkVilludo\Permission\Controllers\PermissionController');
 
-Route::resource('posts', 'PostController');
+Route::resource('posts', 'MarkVilludo\Permission\Controllers\PostController');
