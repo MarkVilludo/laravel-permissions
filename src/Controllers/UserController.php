@@ -37,7 +37,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('users.create', ['roles'=>$roles]);
+        return view('laravel-permission::users.create', ['roles'=>$roles]);
     }
 
     /**
