@@ -1,6 +1,7 @@
 <?php
 
-namespace Spatie\Permission\Controllers;
+namespace MarkVilludo\Calculator\Controllers;
+
 use Illuminate\Http\Request;
 
 use Auth;

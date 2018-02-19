@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace MarkVilludo\Calculator\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
