@@ -11,7 +11,12 @@ use MarkVilludo\Permission\Contracts\Permission as PermissionContract;
 class PermissionServiceProvider extends ServiceProvider
 {
     public function boot(PermissionRegistrar $permissionLoader)
-    {
+    {   
+        $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
+
+        $this->publishes([
+           __DIR__.'/../views' => resource_path('views/vendor/mark-villudo/laravel-permission'),
+        ]);
         if (isNotLumen()) {
             $this->publishes([
                 __DIR__.'/../config/permission.php' => config_path('permission.php'),
