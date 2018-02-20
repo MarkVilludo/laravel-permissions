@@ -10,7 +10,7 @@ class PermissionServiceProvider extends ServiceProvider
 {
     public function boot(PermissionRegistrar $permissionLoader)
     {   
-        $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
+         $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
 
         $this->publishes([
            __DIR__.'/../views' => resource_path('views/vendor/mark-villudo/laravel-permission'),
@@ -104,6 +104,6 @@ class PermissionServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         include __DIR__.'/routes/api.php';
-//         include __DIR__.'/routes/web.php';
+        include __DIR__.'/routes/web.php';
     }  
 }
