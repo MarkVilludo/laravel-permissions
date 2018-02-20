@@ -926,6 +926,8 @@ include default string length in AppServiceProvider
         Passport::routes();
         //
     }
+   //required laravel collective in composer json
+   "laravelcollective/html": "^5.4.0",
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
