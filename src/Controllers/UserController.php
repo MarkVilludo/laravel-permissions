@@ -2,19 +2,19 @@
 
 namespace MarkVilludo\Permission\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
-use Auth;
-use MarkVilludo\Permission\Models\Role;
 use MarkVilludo\Permission\Models\Permission;
+use App\Http\Controllers\Controller;
+use MarkVilludo\Permission\Models\Role;
+use Illuminate\Http\Request;
+use App\User;
 use Session;
+use Auth;
 
 class UserController extends Controller
 {
     public function __construct() 
     {
-        $this->middleware(['auth']);
+        // $this->middleware(['auth']);
     }
     
     /**
