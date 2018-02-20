@@ -43,7 +43,6 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {   
-        return $request->all();
         $this->validate($request, [
             'name'=>'required|unique:roles|max:10',
             'permissions' =>'required',
@@ -64,9 +63,11 @@ class RoleController extends Controller
             $role->givePermissionTo($p);
         }
 
-        return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role'. $role->name.' added!');
+        $roles = Role::all();
+
+        return view('laravel-permission::roles.index')->with('roles', $roles)->with('flash_message',
+            'Role'. $role->name.' added!');
+           
     }
 
     /**
