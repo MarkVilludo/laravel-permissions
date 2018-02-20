@@ -17,7 +17,7 @@ class RoleController extends Controller
     {   
         $this->role = $role;
         $this->permission = $permission;
-        $this->middleware(['auth', 'isAdmin']);
+        // $this->middleware(['auth', 'isAdmin']);
     }
     /**
      * Display a listing of the resource.
