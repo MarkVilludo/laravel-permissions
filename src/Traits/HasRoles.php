@@ -33,7 +33,7 @@ trait HasRoles
             config('permission.models.role'),
             'model',
             config('permission.table_names.model_has_roles'),
-            'model_id',
+            'user_id',
             'role_id'
         );
     }
@@ -47,7 +47,7 @@ trait HasRoles
             config('permission.models.permission'),
             'model',
             config('permission.table_names.model_has_permissions'),
-            'model_id',
+            'user_id',
             'permission_id'
         );
     }
