@@ -104,6 +104,6 @@ class PermissionServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         include __DIR__.'/routes/api.php';
-        include __DIR__.'/routes/web.php';
+//         include __DIR__.'/routes/web.php';
     }  
 }
