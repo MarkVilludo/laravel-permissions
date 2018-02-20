@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function __construct() 
     {
-        // $this->middleware(['auth', 'isAdmin']);
+        $this->middleware(['auth']);
     }
     
     /**
@@ -47,7 +47,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // return $request->all();
+        // return $request['roles'];
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users',
@@ -58,17 +60,18 @@ class UserController extends Controller
 
         $roles = $request['roles'];
 
-        if (isset($roles)) {
+        if (count($request['roles']) > 0) {
 
             foreach ($roles as $role) {
-            $role_r = Role::where('id', '=', $role)->firstOrFail();            
-            $user->assignRole($role_r);
+                $role_r = Role::where('id', '=', $role)->firstOrFail();            
+                $user->assignRole($role_r);
             }
         }        
 
-        return redirect()->route('laravel-permission::users.index')
-            ->with('flash_message',
-             'User successfully added.');
+        $users = User::all();
+
+        return view('laravel-permission::users.index')->with('users', $users)->with('flash_message','User successfully added.');
+            
     }
 
     /**
@@ -117,15 +120,23 @@ class UserController extends Controller
         $roles = $request['roles'];
         $user->fill($input)->save();
 
-        if (isset($roles)) {        
-            return $user->roles()->sync($roles);            
+        //collect roles name and syn in user roles
+        $rolesArray = [];
+        if (count($request['roles']) > 0) {
+            foreach ($request['roles'] as $key => $role) {
+                # code...
+                $role = Role::find($role);
+                $rolesArray[] = $role->name;
+            }
+            $user->syncRoles($rolesArray);   
         }        
         else {
             $user->roles()->detach();
         }
-        return redirect()->route('laravel-permission::users.index')
-            ->with('flash_message',
-             'User successfully edited.');
+
+        $users = User::all();
+
+        return view('laravel-permission::users.index')->with('users', $users)->with('flash_message', 'User successfully edited.');
     }
 
     /**
