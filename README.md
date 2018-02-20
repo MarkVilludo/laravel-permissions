@@ -841,11 +841,91 @@ Special thanks to [Alex Vanderbist](https://github.com/AlexVanderbist) who great
 
 ## Support us
 
-Spatie is a web design agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://markvilludo.be/opensource).
+markanthony.villudo@gmail.com
+markanthony.villudo@synergy88digital.com
 
 Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
 All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
+##Specified to long
+include default string length in AppServiceProvider
+		
+   use Illuminate\Support\Facades\Schema;
+
+    public function boot()
+   {
+    Schema::defaultStringLength(191);
+   }
+
+## Additional setup 
+  // We include also laravel passport in this package therefore you need to add this additional stuff.
+  
+  //Add this to user model to work used permission per role or vise versa
+
+    use MarkVilludo\Permission\Traits\HasRoles;
+    use Laravel\Passport\HasApiTokens;
+
+    class User extends Authenticatable
+    {   
+    use HasRoles;
+    use HasApiTokens, Notifiable;
+
+     public function setPasswordAttribute($password)
+        {   
+            $this->attributes['password'] = bcrypt($password);
+        }
+    }
+    
+
+  //update create_permissions_tables.php.sub
+    //update model_has_permissions into
+
+    Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames) {
+            $table->integer('user_id')->unsigned();
+            $table->integer('permission_id')->unsigned();
+            $table->string('model_type');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('permission_id')
+                ->references('id')
+                ->on('permissions')
+                ->onDelete('cascade');
+
+            $table->primary(['permission_id', 'user_id', 'model_type']);
+        });
+     //Update model has roles
+        Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames) {
+            $table->integer('role_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->string('model_type');
+
+            $table->foreign('role_id')
+                ->references('id')
+                ->on($tableNames['roles'])
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->primary(['role_id', 'user_id', 'model_type']);
+        });   
+    //were required laravel passport in this package therefore we need to add this following
+    //AuthserviceProvider
+    use Laravel\Passport\Passport;
+
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        Passport::routes();
+        //
+    }
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
