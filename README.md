@@ -928,6 +928,22 @@ include default string length in AppServiceProvider
     }
    //required laravel collective in composer json
    "laravelcollective/html": "^5.4.0",
+## Routes
+    //include this in routes/web
+    Route::get('/login', function () {
+    return view('laravel-permission::auth.login');
+    });
+
+    Route::get('/register', function () {
+        return view('laravel-permission::auth.register');
+    });
+    Route::get('/home', function () {
+        return view('index');
+    });
+    Route::get('/logout', function () {
+        Auth::logout();
+        return view('laravel-permission::auth.login');
+    });
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
