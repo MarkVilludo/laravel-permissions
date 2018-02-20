@@ -944,6 +944,50 @@ include default string length in AppServiceProvider
         Auth::logout();
         return view('laravel-permission::auth.login');
     });
+ ## Works also on Policies
+    //create policy 
+    php artisan make:policy RolePermissionsPolicy
+    <?php
+
+namespace App\Policies;
+
+use App\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+use MarkVilludo\Permission\Models\Role;
+use MarkVilludo\Permission\Models\Permission;
+
+class RolePermissionsPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Create a new policy instance.
+     *
+     * @return void
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+    public function index(User $user, $permission){
+        if (auth()->user()->hasPermissionTo($permission)) {
+           return true;
+        } else {
+            return false;
+        }
+    }
+}
+//Register policy in AuthServiceProvider
+    use App\Policies\RolePermissionsPolicy;
+    
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        Gate::define('check-role-permission', 'App\Policies\RolePermissionsPolicy@index');
+    }
+    
+    
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
