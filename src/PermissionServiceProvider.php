@@ -13,7 +13,7 @@ class PermissionServiceProvider extends ServiceProvider
          $this->loadViewsFrom(__DIR__.'/../views', 'laravel-permission');
 
         $this->publishes([
-           __DIR__.'/../views' => resource_path(''),
+           __DIR__.'/../views' => resource_path('/views'),
         ],'views');
         if (isNotLumen()) {
 
