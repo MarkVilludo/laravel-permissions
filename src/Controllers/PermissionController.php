@@ -2,12 +2,12 @@
 
 namespace MarkVilludo\Permission\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Auth;
-use MarkVilludo\Permission\Models\Role;
 use MarkVilludo\Permission\Models\Permission;
+use MarkVilludo\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class PermissionController extends Controller
 {
@@ -24,8 +24,11 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-
-        return view('laravel-permission::permissions.index')->with('permissions', $permissions);
+        if (View::exists('permissions.index')) {
+            return view('permissions.index')->with('permissions', $permissions);
+        } else {
+            return view('laravel-permission::permissions.index')->with('permissions', $permissions);
+        }
     }
 
     /**
@@ -37,7 +40,11 @@ class PermissionController extends Controller
     {
         $roles = Role::get();
 
-        return view('laravel-permission::permissions.create')->with('roles', $roles);
+        if (View::exists('permissions.create')) {
+            return view('permissions.create')->with('roles', $roles);
+        } else {
+            return view('laravel-permission::permissions.create')->with('roles', $roles);
+        }
     }
 
     /**
@@ -48,7 +55,6 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        
         // return $request->all();
         $this->validate($request, [
             'name'=>'required|max:40',
@@ -71,9 +77,11 @@ class PermissionController extends Controller
             }
         }
 
-        return redirect()->route('permissions.index')
-            ->with('flash_message',
-             'Permission'. $permission->name.' added!');
+        if (View::exists('permissions.index')) {
+            return redirect()->route('permissions.index')->with('flash_message','Permission'. $permission->name.' added!');
+        } else {
+            return redirect()->route('laravel-permission::permissions.index')->with('flash_message','Permission'. $permission->name.' added!');
+        }
     }
 
     /**
@@ -97,7 +105,11 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
         
-        return view('laravel-permission::permissions.edit', compact('permission'));
+        if (View::exists('permissions.edit')) {
+            return view('permissions.edit', compact('permission'));
+        } else {
+            return view('laravel-permission::permissions.edit', compact('permission'));
+        }
     }
 
     /**
@@ -118,9 +130,13 @@ class PermissionController extends Controller
         $input = $request->all();
         $permission->fill($input)->save();
 
-        return redirect()->route('permissions.index')
-            ->with('flash_message',
-             'Permission'. $permission->name.' updated!');
+        if (View::exists('permissions.index')) {
+            return redirect()->route('permissions.index')->with('flash_message','Permission'. $permission->name.' updated!');
+        } else {
+            return redirect()->route('laravel-permission::permissions.index')
+                        ->with('flash_message','Permission'. $permission->name.' updated!');
+        }
+        
     }
 
     /**
