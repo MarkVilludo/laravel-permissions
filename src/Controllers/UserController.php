@@ -3,8 +3,9 @@
 namespace MarkVilludo\Permission\Controllers;
 
 use MarkVilludo\Permission\Models\Permission;
-use App\Http\Controllers\Controller;
 use MarkVilludo\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
