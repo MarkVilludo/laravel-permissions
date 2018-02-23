@@ -194,7 +194,23 @@ return [
     'display_permission_in_exception' => false,
 ];
 ```
+You can publish the resources files with:
 
+```bash
+php artisan vendor:publish --provider="MarkVilludo\Permission\PermissionServiceProvider" --tag="views"
+```
+
+with the content of the following view folders: and to change views interface just feel free, because its free! :))
+```
+auth\
+errors\
+layouts\
+permissions\
+roles\
+users\
+errors\
+
+```
 ### Lumen
 
 You can install the package via Composer:
