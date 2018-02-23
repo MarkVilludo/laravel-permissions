@@ -2,12 +2,12 @@
 
 namespace MarkVilludo\Permission\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Auth;
-use MarkVilludo\Permission\Models\Role;
 use MarkVilludo\Permission\Models\Permission;
+use MarkVilludo\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class RoleController extends Controller
 {
@@ -20,7 +20,11 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return view('laravel-permission::roles.index')->with('roles', $roles);
+        if (View::exists('roles.index')) {
+            return view('roles.index')->with('roles', $roles);
+        } else {
+            return view('laravel-permission::roles.index')->with('roles', $roles);
+        }
     }
 
     /**
@@ -32,7 +36,11 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('laravel-permission::roles.create', ['permissions'=>$permissions]);
+        if (View::exists('roles.create')) {
+            return view('roles.create', ['permissions'=>$permissions]);
+        } else {
+            return view('laravel-permission::roles.create', ['permissions'=>$permissions]);
+        }
     }
 
     /**
@@ -65,9 +73,13 @@ class RoleController extends Controller
 
         $roles = Role::all();
 
-        return view('laravel-permission::roles.index')->with('roles', $roles)->with('flash_message',
-            'Role'. $role->name.' added!');
-           
+        if (View::exists('roles.create')) {
+            return view('roles.index')->with('roles', $roles)
+                        ->with('flash_message','Role'. $role->name.' added!');
+        } else {
+            return view('laravel-permission::roles.index')->with('roles', $roles)
+                        ->with('flash_message','Role'. $role->name.' added!');
+        }
     }
 
     /**
@@ -92,7 +104,11 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        return view('laravel-permission::roles.edit', compact('role', 'permissions'));
+        if (View::exists('roles.create')) {
+            return view('roles.create', compact('role', 'permissions'));
+        } else {
+            return view('laravel-permission::roles.edit', compact('role', 'permissions'));
+        }
     }
 
     /**
@@ -125,9 +141,11 @@ class RoleController extends Controller
             $role->givePermissionTo($p);  
         }
 
-        return redirect()->route('laravel-permission::roles.index')
-            ->with('flash_message',
-             'Role'. $role->name.' updated!');
+        if (View::exists('roles.create')) {
+            return redirect()->route('roles.index')->with('flash_message', 'Role'. $role->name.' updated!');
+        } else {
+            return redirect()->route('laravel-permission::roles.index')->with('flash_message', 'Role'. $role->name.' updated!');
+        }
     }
 
     /**
@@ -141,8 +159,10 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('laravel-permission::roles.index')
-            ->with('flash_message',
-             'Role deleted!');
+        if (View::exists('roles.index')) {
+            return redirect()->route('roles.index')->with('flash_message', 'Role deleted!');
+        } else {
+            return redirect()->route('laravel-permission::roles.index')->with('flash_message', 'Role deleted!');
+        }
     }
 }
