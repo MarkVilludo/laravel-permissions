@@ -200,7 +200,7 @@ You can publish the resources files with:
 php artisan vendor:publish --provider="MarkVilludo\Permission\PermissionServiceProvider" --tag="views"
 ```
 
-with the content of the following view folders: and to change views interface just feel free, because its free! :))
+with the content of the following view folders: and to change view layouts just feel free, because its free! :))
 ```
 auth\
 errors\
