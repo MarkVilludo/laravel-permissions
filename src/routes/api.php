@@ -10,8 +10,8 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/login', 'MarkVilludo\Permission\Controllers\Api\PassportController@login');
-Route::post('/register', 'MarkVilludo\Permission\Controllers\Api\PassportController@register');
+Route::post('/login', 'MarkVilludo\Permission\Controllers\Api\PassportController@login')->name('login');
+Route::post('/register', 'MarkVilludo\Permission\Controllers\Api\PassportController@register')->name('register');
 //checkout orders
 Route::post('/checkout','MarkVilludo\Permission\Controllers\Api\ShoppingCartController@checkout');
 
