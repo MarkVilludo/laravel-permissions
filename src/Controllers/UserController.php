@@ -26,7 +26,11 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('laravel-permission::users.index')->with('users', $users);
+        if (View::exists('users.index')) {
+            return view('users.index')->with('users', $users);
+        } else  {
+            return view('laravel-permission::users.index')->with('users', $users);
+        }
     }
 
     /**
@@ -37,7 +41,12 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('laravel-permission::users.create', ['roles'=>$roles]);
+
+        if (View::exists('users.create')) {
+            return view('users.create', ['roles'=>$roles]);
+        } else {
+            return view('laravel-permission::users.create', ['roles'=>$roles]);
+        }
     }
 
     /**
@@ -70,8 +79,11 @@ class UserController extends Controller
 
         $users = User::all();
 
-        return view('laravel-permission::users.index')->with('users', $users)->with('flash_message','User successfully added.');
-            
+        if (View::exists('users.index')) {
+            return view('users.index')->with('users', $users)->with('flash_message','User successfully added.');
+        } else {
+            return view('laravel-permission::users.index')->with('users', $users)->with('flash_message','User successfully added.');
+        }
     }
 
     /**
@@ -96,7 +108,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::get();
 
-        return view('laravel-permission::users.edit', compact('user', 'roles'));
+        if (View::exists('users.edit')) {
+            return view('users.edit', compact('user', 'roles'));
+        } else {
+            return view('laravel-permission::users.edit', compact('user', 'roles'));
+        }
     }
 
     /**
@@ -136,7 +152,12 @@ class UserController extends Controller
 
         $users = User::all();
 
-        return view('laravel-permission::users.index')->with('users', $users)->with('flash_message', 'User successfully edited.');
+        if (View::exists('users.index')) {
+            return view('users.index')->with('users', $users)->with('flash_message', 'User successfully edited.');
+        } else {
+            return view('laravel-permission::users.index')->with('users', $users)
+                        ->with('flash_message', 'User successfully edited.');
+        }
     }
 
     /**
@@ -150,8 +171,12 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('laravel-permission::users.index')
-            ->with('flash_message',
-             'User successfully deleted.');
+        if (View::exists('users.index')) {
+            return redirect()->route('users.index')->with('flash_message', 'User successfully deleted.');
+        } else {
+            return redirect()->route('laravel-permission::users.index')
+                ->with('flash_message',
+                 'User successfully deleted.');
+        }
     }
 }
