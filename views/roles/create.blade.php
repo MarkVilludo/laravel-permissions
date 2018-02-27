@@ -20,10 +20,22 @@
     <h5><b>Assign Permissions</b></h5>
 
     <div class='form-group'>
-        @foreach ($permissions as $permission)
-            {{ Form::checkbox('permissions[]',  $permission->id ) }}
-            {{ Form::label($permission->name, ucfirst($permission->name)) }}<br>
-
+        @foreach ($permissions as $permissionModule)
+            <div class="col-md-12">
+                {{Form::checkbox('') }}
+                {{Form::label($permissionModule['module'], ucfirst($permissionModule['module'])) }}<br>
+               
+            </div>
+            <div class="col-md-12">
+                @foreach ($permissionModule['module_functions'] as $permission)
+                    <div class="col-md-9">
+                        {{Form::label($permission['name'], ucfirst($permission['name'])) }}<br>
+                    </div>
+                    <div class="col-md-3">
+                        {{Form::checkbox('permissions[]',  $permission['id']) }}
+                    </div>
+                @endforeach
+            </div>
         @endforeach
     </div>
 
