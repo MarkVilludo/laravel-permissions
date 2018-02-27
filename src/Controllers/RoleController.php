@@ -105,8 +105,8 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        if (View::exists('roles.create')) {
-            return view('roles.create', compact('role', 'permissions'));
+        if (View::exists('roles.edit')) {
+            return view('roles.edit', compact('role', 'permissions'));
         } else {
             return view('laravel-permission::roles.edit', compact('role', 'permissions'));
         }
