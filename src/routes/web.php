@@ -13,6 +13,8 @@
 
 Route::resource('users', 'MarkVilludo\Permission\Controllers\UserController');
 
+Route::get('roles/createRoleApi', 'MarkVilludo\Permission\Controllers\RoleController@createRoleApi');
+Route::get('roles/createRoleWeb', 'MarkVilludo\Permission\Controllers\RoleController@createRoleWeb');
 Route::resource('roles', 'MarkVilludo\Permission\Controllers\RoleController');
 
 Route::resource('permissions', 'MarkVilludo\Permission\Controllers\PermissionController');
