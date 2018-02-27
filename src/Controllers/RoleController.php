@@ -34,14 +34,68 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    
+    public function createRoleApi(Request $request)
     {
-        $permissions = Permission::all();
+        $permissionsArray = Permission::where('guard_name','api')->get();
+
+         // begin the iteration for grouping module name
+        $permissions = [];
+        $modulefunctionArray = [];
+        $result = [];
+
+        foreach ($permissionsArray as $key => $module) {
+            $modulefunctionArray[$module->module] = ['module' => $module->module, 'guard_name' => $module->guard_name, 'id' => $module->id];
+
+        }
+        foreach ($modulefunctionArray as $keyModule => $value) {
+            $moduleFunction = [];
+            $moduleName = $value['module'];
+            foreach ($permissionsArray as $key => $module) {
+                if ($module->module == $moduleName) {
+                    $moduleFunction[] = ['id' => $module->id,'module' => $module->module,'name' => $module->name];
+                }
+            }
+            $permissions[] = ['module' => $value['module'],'id' => $value['id'], 'module_functions' => $moduleFunction];
+        }
+
 
         if (View::exists('roles.create')) {
-            return view('roles.create', ['permissions'=>$permissions]);
+            return view('roles.create', ['permissions'=> $permissions]);
         } else {
-            return view('laravel-permission::roles.create', ['permissions'=>$permissions]);
+            return view('laravel-permission::roles.create', ['permissions'=> $permissions]);
+        }
+    }
+
+    public function createRoleWeb(Request $request)
+    {
+        $permissionsArray = Permission::where('guard_name','web')->get();
+
+         // begin the iteration for grouping module name
+        $permissions = [];
+        $modulefunctionArray = [];
+        $result = [];
+
+        foreach ($permissionsArray as $key => $module) {
+            $modulefunctionArray[$module->module] = ['module' => $module->module, 'guard_name' => $module->guard_name, 'id' => $module->id];
+
+        }
+        foreach ($modulefunctionArray as $keyModule => $value) {
+            $moduleFunction = [];
+            $moduleName = $value['module'];
+            foreach ($permissionsArray as $key => $module) {
+                if ($module->module == $moduleName) {
+                    $moduleFunction[] = ['id' => $module->id,'module' => $module->module,'name' => $module->name];
+                }
+            }
+            $permissions[] = ['module' => $value['module'],'id' => $value['id'], 'module_functions' => $moduleFunction];
+        }
+
+
+        if (View::exists('roles.create')) {
+            return view('roles.create', ['permissions'=> $permissions]);
+        } else {
+            return view('laravel-permission::roles.create', ['permissions'=> $permissions]);
         }
     }
 
@@ -104,29 +158,26 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        $permissionsArray = Permission::all();
+        $permissionsArray = Permission::where('guard_name', $role->guard_name)->get();
 
         // begin the iteration for grouping module name
-          $permissions = [];
-          $modulefunctionArray = [];
-          $result = [];
-          foreach ($permissionsArray as $key => $module) {
-              # code...
-              $modulefunctionArray[$module->module] = ['module' => $module->module, 'id' => $module->id];
+        $permissions = [];
+        $modulefunctionArray = [];
+        $result = [];
+        foreach ($permissionsArray as $key => $module) {
+            $modulefunctionArray[$module->module] = ['module' => $module->module, 'guard_name' => $module->guard_name, 'id' => $module->id];
 
-          }
-          foreach ($modulefunctionArray as $keyModule => $value) {
-              # code...
-              $moduleFunction = [];
-              $moduleName = $value['module'];
-              foreach ($permissionsArray as $key => $module) {
-                  # code...
-                  if($module->module == $moduleName){
-                      $moduleFunction[] = ['id' => $module->id,'module' => $module->module,'name' => $module->name];
-                  }
-              }
-              $permissions[] = ['module' => $value['module'],'id' => $value['id'], 'module_functions' => $moduleFunction];
-          }
+        }
+        foreach ($modulefunctionArray as $keyModule => $value) {
+            $moduleFunction = [];
+            $moduleName = $value['module'];
+            foreach ($permissionsArray as $key => $module) {
+                if ($module->module == $moduleName) {
+                    $moduleFunction[] = ['id' => $module->id,'module' => $module->module,'name' => $module->name];
+                }
+            }
+            $permissions[] = ['module' => $value['module'],'id' => $value['id'], 'module_functions' => $moduleFunction];
+        }
 
         if (View::exists('roles.edit')) {
             return view('roles.edit', compact('role', 'permissions'));
@@ -146,9 +197,9 @@ class RoleController extends Controller
     {   
         // return $request->all();
         $role = Role::findOrFail($id);
-        $this->validate($request, [
-            'name'=>'required|'.Rule::unique('roles')->ignore($id, 'id')
-        ]);
+        // $this->validate($request, [
+        //     'name'=>'required|'.Rule::unique('roles')->ignore($id, 'id')
+        // ]);
 
         $input = $request->except(['permissions']);
         $permissions = $request['permissions'];
