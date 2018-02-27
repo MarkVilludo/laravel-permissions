@@ -6,6 +6,7 @@ use MarkVilludo\Permission\Models\Permission;
 use MarkVilludo\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
@@ -103,7 +104,29 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        $permissions = Permission::all();
+        $permissionsArray = Permission::all();
+
+        // begin the iteration for grouping module name
+          $permissions = [];
+          $modulefunctionArray = [];
+          $result = [];
+          foreach ($permissionsArray as $key => $module) {
+              # code...
+              $modulefunctionArray[$module->module] = ['module' => $module->module, 'id' => $module->id];
+
+          }
+          foreach ($modulefunctionArray as $keyModule => $value) {
+              # code...
+              $moduleFunction = [];
+              $moduleName = $value['module'];
+              foreach ($permissionsArray as $key => $module) {
+                  # code...
+                  if($module->module == $moduleName){
+                      $moduleFunction[] = ['id' => $module->id,'module' => $module->module,'name' => $module->name];
+                  }
+              }
+              $permissions[] = ['module' => $value['module'],'id' => $value['id'], 'module_functions' => $moduleFunction];
+          }
 
         if (View::exists('roles.edit')) {
             return view('roles.edit', compact('role', 'permissions'));
@@ -124,8 +147,7 @@ class RoleController extends Controller
         // return $request->all();
         $role = Role::findOrFail($id);
         $this->validate($request, [
-            'name'=>'required|max:10|unique:roles,name,'.$id,
-            'permissions' =>'required',
+            'name'=>'required|'.Rule::unique('roles')->ignore($id, 'id')
         ]);
 
         $input = $request->except(['permissions']);
