@@ -42,7 +42,8 @@
         </table>
     </div>
 
-    <a href="{{ URL::to('roles/create') }}" class="btn btn-success">Add Role</a>
+    <a href="{{ URL::to('roles/createRoleApi') }}" class="btn btn-success">Add Api Role</a>
+    <a href="{{ URL::to('roles/createRoleWeb') }}" class="btn btn-success">Add Web Role</a>
 
 </div>
 
