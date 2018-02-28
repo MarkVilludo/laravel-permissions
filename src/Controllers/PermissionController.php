@@ -22,15 +22,32 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $permissions = Permission::all();
+    public function webIndex()
+    {   
+        $data['permissions'] = Permission::where('guard_name','web')->paginate(10);
+        $data['title'] = 'Available Permissions for Web';
+
         if (View::exists('permissions.index')) {
-            return view('permissions.index')->with('permissions', $permissions);
+            return view('permissions.index', $data);
         } else {
-            return view('laravel-permission::permissions.index')->with('permissions', $permissions);
+            return view('laravel-permission::permissions.index', $data);
         }
     }
+
+    public function apiIndex()
+    {   
+        $data['permissions'] = Permission::where('guard_name','api')->paginate(10);
+        $data['title'] = 'Available Permissions for Api';
+
+        if (View::exists('permissions.index')) {
+            return view('permissions.index', $data);
+        } else {
+            return view('laravel-permission::permissions.index', $data);
+        }
+    }
+
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -104,12 +121,12 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $permission = Permission::find($id);
+        $data['permission'] = Permission::find($id);
         
         if (View::exists('permissions.edit')) {
-            return view('permissions.edit', compact('permission'));
+            return view('permissions.edit', $data['permission']);
         } else {
-            return view('laravel-permission::permissions.edit', compact('permission'));
+            return view('laravel-permission::permissions.edit', $data['permission']);
         }
     }
 
