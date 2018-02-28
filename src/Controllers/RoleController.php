@@ -18,14 +18,26 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function webIndex()
     {
-        $roles = Role::all();
+        $data['roles'] = Role::where('guard_name','web')->paginate(10);
+        $data['title'] = 'Available Roles for Web';
 
         if (View::exists('roles.index')) {
-            return view('roles.index')->with('roles', $roles);
+            return view('roles.index', $data);
         } else {
-            return view('laravel-permission::roles.index')->with('roles', $roles);
+            return view('laravel-permission::roles.index', $data);
+        }
+    }
+    public function apiIndex()
+    {
+        $data['roles'] = Role::where('guard_name','api')->paginate(10);
+        $data['title'] = 'Available Roles for Api';
+
+        if (View::exists('roles.index')) {
+            return view('roles.index', $data);
+        } else {
+            return view('laravel-permission::roles.index', $data);
         }
     }
 
@@ -216,7 +228,7 @@ class RoleController extends Controller
         }
 
         if (View::exists('roles.create')) {
-            return redirect()->route('roles.index')->with('flash_message', 'Role'. $role->name.' updated!');
+            return redirect()->route('roles.webIndex')->with('flash_message', 'Role'. $role->name.' updated!');
         } else {
             return redirect()->route('laravel-permission::roles.index')->with('flash_message', 'Role'. $role->name.' updated!');
         }
