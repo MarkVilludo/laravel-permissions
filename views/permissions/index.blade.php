@@ -3,16 +3,16 @@
 @section('title', '| Permissions')
 
 @section('content')
-
+<div class="pull-right" style="padding-right: 120px">
+   <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
+    <a href="{{ route('roles.webIndex') }}" class="btn btn-default pull-right">Web Roles</a>
+    <a href="{{ route('roles.apiIndex') }}" class="btn btn-default pull-right">Api Roles</a>
+</div>
 <div class="col-lg-10 col-lg-offset-1">
-    <h1><i class="fa fa-key"></i>Available Permissions
-
-    <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
-    <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a></h1>
+    <h1><i class="fa fa-key"></i>{{$title}} </h1>
     <hr>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
-
             <thead>
                 <tr>
                     <th>Permissions</th>
@@ -35,6 +35,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $permissions->links() }}
     </div>
 
     <a href="{{ URL::to('permissions/create') }}" class="btn btn-success">Add Permission</a>
