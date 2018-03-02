@@ -8,8 +8,8 @@
     <a href="{{ route('roles.webIndex') }}" class="btn btn-default pull-right">Web Roles</a>
     <a href="{{ route('roles.apiIndex') }}" class="btn btn-default pull-right">Api Roles</a>
 </div>
+ <!-- //Main content page. -->
 <div class="col-lg-10 col-lg-offset-1">
-    <h1><i class="fa fa-key"></i>{{$title}} </h1>
     <hr>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
@@ -37,9 +37,8 @@
         </table>
         {{ $permissions->links() }}
     </div>
-
     <a href="{{ URL::to('permissions/create') }}" class="btn btn-success">Add Permission</a>
-
 </div>
+
 
 @endsection
