@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('users', 'MarkVilludo\Permission\Controllers\RoleController@index')->name('users.index');
 
 Route::resource('users', 'MarkVilludo\Permission\Controllers\UserController');
 
