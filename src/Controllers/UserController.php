@@ -107,12 +107,13 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::get();
+        $rolesWeb = Role::where('guard_name','web')->get();
+        $rolesApi = Role::where('guard_name','api')->get();
 
         if (View::exists('users.edit')) {
-            return view('users.edit', compact('user', 'roles'));
+            return view('users.edit', compact('user', 'rolesWeb', 'rolesApi'));
         } else {
-            return view('laravel-permission::users.edit', compact('user', 'roles'));
+            return view('laravel-permission::users.edit', compact('user', 'rolesWeb', 'rolesApi'));
         }
     }
 
