@@ -23,13 +23,23 @@
     </div>
 
     <h5><b>Give Role</b></h5>
+    <div class="row">
+        <div class='col-lg-6 form-group'>
+            <label>(WEB)</label> <br>
+            @foreach ($rolesWeb as $roleWeb)
+                {{ Form::checkbox('roles[]',  $roleWeb->id, $user->roles ) }}
+                {{ Form::label($roleWeb->name, ucfirst($roleWeb->name)) }}<br>
 
-    <div class='form-group'>
-        @foreach ($roles as $role)
-            {{ Form::checkbox('roles[]',  $role->id, $user->roles ) }}
-            {{ Form::label($role->name, ucfirst($role->name)) }}<br>
+            @endforeach
+        </div>
+        <div class='col-lg-6 form-group'>
+            <label>(API)</label> <br>
+            @foreach ($rolesApi as $roleApi)
+                {{ Form::checkbox('roles[]',  $roleApi->id, $user->roles ) }}
+                {{ Form::label($roleApi->name, ucfirst($roleApi->name)) }}<br>
 
-        @endforeach
+            @endforeach
+        </div>
     </div>
 
     <div class="form-group">
