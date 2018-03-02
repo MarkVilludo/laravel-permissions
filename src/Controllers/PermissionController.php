@@ -56,12 +56,13 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
+        $data['rolesWeb'] = Role::where('guard_name','web')->get();
+        $data['rolesApi'] = Role::where('guard_name','api')->get();
 
         if (View::exists('permissions.create')) {
-            return view('permissions.create')->with('roles', $roles);
+            return view('permissions.create',$data);
         } else {
-            return view('laravel-permission::permissions.create')->with('roles', $roles);
+            return view('laravel-permission::permissions.create',$data);
         }
     }
 
@@ -79,8 +80,10 @@ class PermissionController extends Controller
         ]);
 
         $name = $request['name'];
+        $module = $request['module'];
         $permission = new Permission();
         $permission->name = $name;
+        $permission->module = $module;
 
         $roles = $request['roles'];
         
@@ -96,9 +99,9 @@ class PermissionController extends Controller
         }
 
         if (View::exists('permissions.index')) {
-            return redirect()->route('permissions.index')->with('flash_message','Permission'. $permission->name.' added!');
+            return redirect()->route('permissions.webIndex')->with('flash_message','Permission'. $permission->name.' added!');
         } else {
-            return redirect()->route('laravel-permission::permissions.index')->with('flash_message','Permission'. $permission->name.' added!');
+            return redirect()->route('permissions.webIndex')->with('flash_message','Permission'. $permission->name.' added!');
         }
     }
 
@@ -124,9 +127,9 @@ class PermissionController extends Controller
         $data['permission'] = Permission::find($id);
         
         if (View::exists('permissions.edit')) {
-            return view('permissions.edit', $data['permission']);
+            return view('permissions.edit', $data);
         } else {
-            return view('laravel-permission::permissions.edit', $data['permission']);
+            return view('laravel-permission::permissions.edit', $data);
         }
     }
 
@@ -149,9 +152,9 @@ class PermissionController extends Controller
         $permission->fill($input)->save();
 
         if (View::exists('permissions.index')) {
-            return redirect()->route('permissions.index')->with('flash_message','Permission'. $permission->name.' updated!');
+            return redirect()->route('permissions.webIndex')->with('flash_message','Permission'. $permission->name.' updated!');
         } else {
-            return redirect()->route('laravel-permission::permissions.index')
+            return redirect()->route('permissions.webIndex')
                         ->with('flash_message','Permission'. $permission->name.' updated!');
         }
         
@@ -175,7 +178,7 @@ class PermissionController extends Controller
         
         $permission->delete();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('permissions.webIndex')
             ->with('flash_message',
              'Permission deleted!');
     }
